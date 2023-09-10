@@ -1,0 +1,36 @@
+<div class="row gy-2">
+  <!-- filter -->
+  <p-multiSelect
+    [options]="seriesList"
+    [showClear]="true"
+    [showToggleAll]="false"
+    [(ngModel)]="selectedSeries"
+    (onChange)="selectedSeriesChange($event)"
+    (onClear)="selectedSeriesClear()"
+    defaultLabel="Select Series"
+    scrollHeight="350px"
+    class="col-6">
+    <ng-template let-group pTemplate="group">
+      <div class="flex align-items-center">
+        <span>{{ group.label }}</span>
+      </div>
+    </ng-template>
+  </p-multiSelect>
+  <p-multiSelect
+    [options]="groupedCharacters"
+    [group]="true"
+    [showClear]="true"
+    [showToggleAll]="false"
+    [(ngModel)]="selectedCharacters"
+    (onChange)="selectedCharactersChange($event)"
+    (onClear)="selectedCharactersClear()"
+    defaultLabel="Select Characters"
+    scrollHeight="350px"
+    class="col-6">
+    <ng-template let-group pTemplate="group">
+      <div class="flex align-items-center">
+        <span>{{ group.label }}</span>
+      </div>
+    </ng-template>
+  </p-multiSelect>
+</div>

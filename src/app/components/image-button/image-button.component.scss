@@ -1,0 +1,36 @@
+
+.image-button{
+  cursor: pointer;
+  position: relative;
+  border: none;
+  border-radius: 20px;
+  background-position: center;
+  background-color: #ffffff;
+  color: #FFFFFF;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: background 0.8s;
+  padding: 10px 10px;
+
+  &:hover {
+    box-shadow: 0 0 4px #999;
+    // color: #FFFFFF;
+    // background: #dcdcdc radial-gradient(circle, transparent 1%, #e0e0e0 1%) center/15000%;
+  }
+  &:active {
+    // opacity: 0.8;
+    // background-color: #c5c5c5;
+    // background-size: 100%;
+    // transition: background 0s;
+  }
+}
+
+.checked-badge {
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  background-color: aqua;
+  border-radius: 50%
+}

@@ -1,0 +1,4 @@
+<button class="image-button d-flex" (click)="click()" href="javascript:void(0)">
+  <img alt="logo" [src]="'assets/goods/' + data.imageUrl" />
+  <div *ngIf="data.checked" class="checked-badge"></div>
+</button>
