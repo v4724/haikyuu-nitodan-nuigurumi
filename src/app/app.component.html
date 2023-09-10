@@ -1,7 +1,14 @@
 <div id="capture" class="container">
   <!-- title -->
   <div class="d-flex justify-content-center py-3 title">
-    にとたん ボールチェーン付ぬいぐるみ
+    {{ 'Title' | translate }}
+    <div id="translate-dropdown" class="translate-dropdown">
+      <select [(ngModel)]="currLang" (change)="changeLang()">
+        <option *ngFor="let lang of languageService.langs" [value]="lang.value">
+          {{ lang.label }}
+        </option>
+      </select>
+    </div>
   </div>
   <!-- tool bar -->
   <app-filter id="filter"></app-filter>
@@ -15,7 +22,9 @@
         (click)="click()"></i>
     </div>
     <div class="p-2">
-      Total: {{ $filteredCheckedCount | async }}/{{ $filteredCount | async }}
+      {{ 'Total' | translate }}: {{ $filteredCheckedCount | async }}/{{
+        $filteredCount | async
+      }}
     </div>
   </div>
   <!-- list -->
@@ -24,7 +33,9 @@
       class="row gx-2 mt-3"
       *ngFor="let item of service.$filteredItems | async">
       <!-- series -->
-      <div class="col-3">{{ item.info.name }}</div>
+      <div class="col-3 series-name pt-3 pr-3">
+        {{ 'Series.' + item.info.name | translate }}
+      </div>
 
       <!-- goods list -->
       <div class="col-9">

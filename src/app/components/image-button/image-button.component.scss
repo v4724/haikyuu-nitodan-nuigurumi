@@ -13,6 +13,7 @@
   text-transform: uppercase;
   transition: background 0.8s;
   padding: 10px 10px;
+  height: 100px;
 
   &:hover {
     box-shadow: 0 0 4px #999;
@@ -25,6 +26,11 @@
     // background-size: 100%;
     // transition: background 0s;
   }
+}
+
+.goods-image {
+  width: 100%;
+  height: 100%;
 }
 
 .checked-badge {

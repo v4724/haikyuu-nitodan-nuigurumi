@@ -16,6 +16,27 @@
 .title {
   font-size: x-large;
   font-weight: bold;
+  position: relative;
+}
+.translate-dropdown {
+  position: absolute;
+  right: 0px;
+
+  select {
+    font-size: small;
+    border: 0px;
+    cursor: pointer;
+
+    &:focus-visible {
+      border: 0px;
+      outline: 0px;
+    }
+  }
+}
+.series-name {
+  display: flex;
+  justify-content: right;
+  padding-right: 2rem;
 }
 .export-btn {
   cursor: pointer;

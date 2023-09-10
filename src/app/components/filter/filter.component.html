@@ -7,12 +7,12 @@
     [(ngModel)]="selectedSeries"
     (onChange)="selectedSeriesChange($event)"
     (onClear)="selectedSeriesClear()"
-    defaultLabel="Select Series"
+    [defaultLabel]="'Select_Series' | translate"
     scrollHeight="350px"
     class="col-6">
-    <ng-template let-group pTemplate="group">
+    <ng-template let-group pTemplate="item">
       <div class="flex align-items-center">
-        <span>{{ group.label }}</span>
+        <span>{{ 'Series.' + group.label | translate }}</span>
       </div>
     </ng-template>
   </p-multiSelect>
@@ -24,12 +24,17 @@
     [(ngModel)]="selectedCharacters"
     (onChange)="selectedCharactersChange($event)"
     (onClear)="selectedCharactersClear()"
-    defaultLabel="Select Characters"
+    [defaultLabel]="'Select_Characters' | translate"
     scrollHeight="350px"
     class="col-6">
+    <ng-template let-group pTemplate="item">
+      <div class="flex align-items-center">
+        <span>{{ 'Character.' + group.label | translate }}</span>
+      </div>
+    </ng-template>
     <ng-template let-group pTemplate="group">
       <div class="flex align-items-center">
-        <span>{{ group.label }}</span>
+        <span>{{ 'School.' + group.label | translate }}</span>
       </div>
     </ng-template>
   </p-multiSelect>

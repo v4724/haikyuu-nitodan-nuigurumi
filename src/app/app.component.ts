@@ -6,6 +6,9 @@ import { GoodsInfoVO } from './core/view-models/GoodsInfoVO';
 import { cloneDeep } from 'lodash';
 import { Observable, map } from 'rxjs';
 import html2canvas from 'html2canvas';
+import { TranslateService } from '@ngx-translate/core';
+import { ListItem } from './core/view-models/common.model';
+import { LanguageService } from './core/services/language.service';
 
 @Component({
   selector: 'app-root',
@@ -14,9 +17,16 @@ import html2canvas from 'html2canvas';
 })
 export class AppComponent implements OnInit {
   title = 'haikyuu-nitodan-nuigurumi';
+  currLang = 'zh-TW';
   downloadLoading = false;
 
-  constructor(public service: FilterService) {}
+  constructor(
+    public service: FilterService,
+    public languageService: LanguageService,
+    private translateService: TranslateService
+  ) {
+    this.translateService.use(this.currLang);
+  }
 
   ngOnInit() {
     console.log();
@@ -41,6 +51,10 @@ export class AppComponent implements OnInit {
     );
   }
 
+  changeLang() {
+    this.translateService.use(this.currLang);
+  }
+
   click() {
     if (this.downloadLoading) return;
 
@@ -49,7 +63,11 @@ export class AppComponent implements OnInit {
     if (element) {
       html2canvas(element, {
         ignoreElements: (element: Element) => {
-          return element.id === 'filter' || element.id === 'export-btn';
+          return (
+            element.id === 'filter' ||
+            element.id === 'export-btn' ||
+            element.id === 'translate-dropdown'
+          );
         },
       }).then(canvas => {
         const a = document.createElement('a');
