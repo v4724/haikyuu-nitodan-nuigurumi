@@ -16,10 +16,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { DropdownModule } from 'primeng/dropdown';
 import { SplitButtonModule } from 'primeng/splitbutton';
+import { APP_BASE_HREF } from '@angular/common';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
+
+function baseUrlSettings(): string {
+  return '/haikyuu-nitodan-nuigurumi';
+}
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +52,7 @@ export function createTranslateLoader(http: HttpClient) {
       },
     }),
   ],
-  providers: [],
+  providers: [{ provide: APP_BASE_HREF, useFactory: baseUrlSettings }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
