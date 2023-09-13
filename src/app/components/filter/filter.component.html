@@ -10,9 +10,19 @@
     [defaultLabel]="'Select_Series' | translate"
     scrollHeight="350px"
     class="col-6">
-    <ng-template let-group pTemplate="item">
+    <ng-template let-value pTemplate="selectedItems">
+      <span
+        class="flex align-items-center gap-2"
+        *ngFor="let item of selectedSeries">
+        {{ 'Series.' + item.label | translate }}
+      </span>
+      <div *ngIf="!selectedSeries || selectedSeries.length === 0">
+        {{ 'Select_Series' | translate }}
+      </div>
+    </ng-template>
+    <ng-template let-item pTemplate="item">
       <div class="flex align-items-center">
-        <span>{{ 'Series.' + group.label | translate }}</span>
+        <span>{{ 'Series.' + item.label | translate }}</span>
       </div>
     </ng-template>
   </p-multiSelect>
@@ -27,6 +37,16 @@
     [defaultLabel]="'Select_Characters' | translate"
     scrollHeight="350px"
     class="col-6">
+    <ng-template let-value pTemplate="selectedItems">
+      <span
+        class="flex align-items-center gap-2"
+        *ngFor="let item of selectedCharacters">
+        {{ 'Character.' + item.label | translate }}
+      </span>
+      <div *ngIf="!selectedCharacters || selectedCharacters.length === 0">
+        {{ 'Select_Characters' | translate }}
+      </div>
+    </ng-template>
     <ng-template let-group pTemplate="item">
       <div class="flex align-items-center">
         <span>{{ 'Character.' + group.label | translate }}</span>

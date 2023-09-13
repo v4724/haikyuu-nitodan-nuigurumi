@@ -18,11 +18,11 @@ import { MultiSelectChangeEvent } from 'primeng/multiselect';
   styleUrls: ['./filter.component.scss'],
 })
 export class FilterComponent implements OnInit {
-  seriesList!: ListItem<string>[];
+  seriesList!: ListItem<ListItem<string>>[];
   groupedCharacters!: SelectItemGroup[];
 
-  selectedSeries!: string[];
-  selectedCharacters!: string[];
+  selectedSeries!: ListItem<string>[];
+  selectedCharacters!: ListItem<string>[];
 
   constructor(private filterService: FilterService) {}
   ngOnInit() {
@@ -30,12 +30,12 @@ export class FilterComponent implements OnInit {
     this.seriesList = [];
 
     schoolList.forEach(school => {
-      const characters: ListItem<string>[] = characterList
+      const characters: ListItem<ListItem<string>>[] = characterList
         .filter(c => c.sId === school.id)
         .map(c => {
           return {
             label: c.name,
-            value: c.id,
+            value: { value: c.id, label: c.name },
           };
         });
       this.groupedCharacters.push({
@@ -47,7 +47,7 @@ export class FilterComponent implements OnInit {
     seriesList.forEach(series => {
       this.seriesList.push({
         label: series.name,
-        value: series.id,
+        value: { value: series.id, label: series.name },
       });
     });
   }

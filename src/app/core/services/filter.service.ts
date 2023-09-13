@@ -10,13 +10,14 @@ import { goodsList, seriesList } from './../../data/DB';
 import { Injectable } from '@angular/core';
 import { SeriesInfoVO } from '../view-models/SeriesInfoVO';
 import { GoodsInfoVO } from '../view-models/GoodsInfoVO';
+import { ListItem } from '../view-models/common.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class FilterService {
-  selectedSeriesChange = new BehaviorSubject<string[]>([]);
-  selectedCharactersChange = new BehaviorSubject<string[]>([]);
+  selectedSeriesChange = new BehaviorSubject<ListItem<string>[]>([]);
+  selectedCharactersChange = new BehaviorSubject<ListItem<string>[]>([]);
 
   items!: SeriesInfoVO[];
   filteredItems = new BehaviorSubject<SeriesInfoVO[]>([]);
@@ -50,13 +51,15 @@ export class FilterService {
   }
 
   filteredItemsChange(
-    selectedSeries: string[],
-    selectedCharacters: string[]
+    selectedSeries: ListItem<string>[],
+    selectedCharacters: ListItem<string>[]
   ): void {
     let filtered: SeriesInfoVO[] = cloneDeep(this.items);
     if (selectedSeries && selectedSeries.length) {
       filtered = filtered.filter(series => {
-        return selectedSeries.find(selected => selected === series.info.id);
+        return selectedSeries.find(
+          selected => selected.value === series.info.id
+        );
       });
     }
     filtered.forEach(series => {
@@ -67,7 +70,9 @@ export class FilterService {
       if (origSeries) {
         series.goodsList = origSeries.goodsList.filter(goods => {
           if (selectedCharacters && selectedCharacters.length)
-            return selectedCharacters.find(selected => selected === goods.cId);
+            return selectedCharacters.find(
+              selected => selected.value === goods.cId
+            );
           return true;
         });
       }
