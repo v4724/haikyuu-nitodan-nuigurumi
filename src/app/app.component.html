@@ -33,12 +33,12 @@
       class="row gx-2 mt-3"
       *ngFor="let item of service.$filteredItems | async">
       <!-- series -->
-      <div class="col-3 series-name pt-3 pr-3">
+      <div class="col-2 series-name pt-3 pr-3">
         {{ 'Series.' + item.info.name | translate }}
       </div>
 
       <!-- goods list -->
-      <div class="col-9">
+      <div class="col-10">
         <div class="goods-list d-flex flex-wrap">
           <ng-container *ngFor="let goods of item.goodsList">
             <div class="goods">

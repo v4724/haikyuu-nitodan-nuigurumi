@@ -5,6 +5,7 @@ body {
   font-family: var(--font-family);
 }
 
-@import "primeng/resources/themes/lara-light-blue/theme.css";
+// @import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "src/assets/theme_custom.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";

@@ -36,6 +36,8 @@
 .series-name {
   display: flex;
   justify-content: right;
+  text-align: right;
+  text-wrap: balance;
   padding-right: 2rem;
 }
 .export-btn {
